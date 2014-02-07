@@ -16,7 +16,11 @@ def getSingleString(outputMsg = ""):
 	return retStr
 
 def yes_no_choice(outputMsg = ""):
-	""" 
+	""" Prompt user with a yes/no ([y/n])
+		choice, repeating the question until
+		the first non-whitespace character entered
+		in the user's response is either 'y' or 'n'.
+		Returns True for a 'y' response and False for a 'n' response.
 	"""
 	retSuccess = False
 	strResponse = ""
