@@ -1,7 +1,7 @@
-__author__ = "Michael Snider"
+__author__ = "Michael Snider, Kevin Chan"
 
 
-import prompt
+import prompt, stipple
 import sys
 from PIL import Image
 
@@ -23,10 +23,22 @@ print "Image converted to bw..."
 print "\t", image.format, image.size, image.mode
 
 
+# change image here ****
+
+
+image = stipple.stipple(image)
+
+
+
+
+
+# **********************
+
+
 print "Saving image..."
 
 separatedFilePath = filePath.rsplit(".", 1)
-newFilePath = separatedFilePath[0] + "-bw" + "." + separatedFilePath[1]
+newFilePath = separatedFilePath[0] + "-stipple" + "." + separatedFilePath[1]
 try:
 	fileTmp = open(newFilePath, "r")
 	fileTmp.close()

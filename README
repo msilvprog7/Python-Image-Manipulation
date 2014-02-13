@@ -8,3 +8,8 @@ Goals:
 Libraries Used:
 	Pillow (and dependencies, libjbeg, etc.)
 
+Process:
+	Robert Bosch is one of the founding researchers of TSP Art (http://www.oberlin.edu/math/faculty/bosch/making-tspart-page.html), detailing the fundamentals of making art using simple cases of the Traveling Salesman Problem. In this explanation, he details the crucial points of first making the image black and white, then "stippling" the image, and then connecting points based on closest paths nearby.
+
+	We are considering making our own algorithm for reducing the number of points in our images.
+	
