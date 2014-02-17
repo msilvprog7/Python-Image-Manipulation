@@ -9,7 +9,7 @@ def stipple(img):
 		remove considerably whiter pixels based on our algorithm for stippling
 	"""
 
-	img = threshold(img, 10)
+	img = threshold(img, 20)
 
 	return img
 
@@ -37,7 +37,7 @@ def threshold(img, value):
 				prevYPixel = img.getpixel((x, y))
 				continue
 
-			difference = img.getpixel((x, y)) - prevYPixel
+			difference = abs(img.getpixel((x, y)) - prevYPixel)
 			prevYPixel = img.getpixel((x, y))
 
 			if difference >= value:
@@ -51,7 +51,7 @@ def threshold(img, value):
 				prevXPixel = img.getpixel((x, y))
 				continue
 
-			difference = img.getpixel((x, y)) - prevXPixel
+			difference = abs(img.getpixel((x, y)) - prevXPixel)
 			prevXPixel = img.getpixel((x, y))
 
 			if difference >= value:

@@ -1,7 +1,7 @@
 __author__ = "Michael Snider, Kevin Chan"
 
 
-import prompt, stipple
+import prompt, stipple, connect
 import sys
 from PIL import Image
 
@@ -27,7 +27,7 @@ print "\t", image.format, image.size, image.mode
 
 
 image = stipple.stipple(image)
-
+image = connect.connect(image)
 
 
 
