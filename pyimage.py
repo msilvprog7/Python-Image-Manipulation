@@ -23,13 +23,10 @@ print "Image converted to bw..."
 print "\t", image.format, image.size, image.mode
 
 
-# change image here ****
+# stipple image ****
 
 
 image = stipple.stipple(image)
-image = connect.connect(image)
-
-
 
 
 # **********************
@@ -37,6 +34,8 @@ image = connect.connect(image)
 
 print "Saving image..."
 
+
+# save stippled image
 separatedFilePath = filePath.rsplit(".", 1)
 newFilePath = separatedFilePath[0] + "-stipple" + "." + separatedFilePath[1]
 try:
@@ -52,3 +51,36 @@ except IOError:
 
 image.save(newFilePath)
 print "\t", "Saved successfully to", newFilePath
+
+
+
+
+# connect image ****
+
+
+image = connect.connect(image)
+
+
+# **********************
+
+
+print "Saving image..."
+
+
+# save tsp image
+separatedFilePath = filePath.rsplit(".", 1)
+newFilePath = separatedFilePath[0] + "-tsp" + "." + separatedFilePath[1]
+try:
+	fileTmp = open(newFilePath, "r")
+	fileTmp.close()
+
+	if not prompt.yes_no_choice("\tWould you like to overwrite file " + newFilePath):
+		print "\tImage was not saved."
+		sys.exit()
+
+except IOError:
+	pass
+
+image.save(newFilePath)
+print "\t", "Saved successfully to", newFilePath
+

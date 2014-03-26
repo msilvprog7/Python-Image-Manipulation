@@ -7,20 +7,24 @@ from PIL import Image
 def connect(img):
 	""" Connect image to finalize the TSP art after stippling
 	"""
-	originalImg= []
+
+	# generate list of all stippled points
+	stippledPoints = []
+
 	for x in range(img.size[0]):
-		colValues = []
 		for y in range(img.size[1]):
-			colValues.append(img.getpixel((x, y)))
-		originalImg.append(colValues)
+			if img.getpixel((x, y)) == 0:
+				stippledPoints.append((x, y))
+
+	print ""
+	print len(stippledPoints), "stipples were generated."
+
+	# how to connect a line: ex. (0, 0) to center of image
+	# img = connectLine(img, (0, 0), (img.size[0]//2, img.size[1]//2))
 
 
-	#test that connects all lines to center of image
+	# generate list of all stippled points
 
-	#for x in range(img.size[0]):
-	#	for y in range(img.size[1]):
-	#		if originalImg[x][y] == 0:
-	#			img = connectLine(img, (x, y), (img.size[0]//2, img.size[1]//2))
 
 	
 	return img
