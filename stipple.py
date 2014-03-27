@@ -6,10 +6,10 @@ from numpy import *
 from random import random
 
 
-VAR_THRESHOLD = 50				# variance of a quarter must be <= this
+VAR_THRESHOLD = 100				# variance of a quarter must be <= this
 
-MAX_PROB = 0.3					# maximum probability for (pixel value of 0)
-MIN_PROB = 0.1 					# minimum probability for (pixel value of 255)
+MAX_PROB = 0.2					# maximum probability for (pixel value of 0)
+MIN_PROB = 0.1					# minimum probability for (pixel value of 255)
 OFF_SET = 0.5 					# offset probability
 
 

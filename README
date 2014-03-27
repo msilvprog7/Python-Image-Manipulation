@@ -6,7 +6,10 @@ Goals:
 	Use Python and associated imaging libraries (Pillow) to manipulate pixels in some fashion to produce TSP Art and maybe some other kind of effects out of images provided by the user.
 
 Libraries Used:
-	Pillow (and dependencies, libjbeg, etc.)
+	Pillow (and dependencies, libjpeg, etc.)
+	Numpy
+	Concorde TSP Solvers
+
 
 Process:
 	Robert Bosch is one of the founding researchers of TSP Art (http://www.oberlin.edu/math/faculty/bosch/making-tspart-page.html), detailing the fundamentals of making art using simple cases of the Traveling Salesman Problem. In this explanation, he details the crucial points of first making the image black and white, then "stippling" the image, and then connecting points based on closest paths nearby.
