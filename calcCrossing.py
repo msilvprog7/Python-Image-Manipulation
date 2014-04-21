@@ -13,10 +13,20 @@ def numZeroesAround(imgArray, (x, y)):
 	for x_r in range(-1, 2):
 		for y_r in range(-1, 2):
 			if x_r != 0 or y_r != 0:
-				if imgArray[x + x_r][y + y_r] == 0:
+				if imgArray[x + x_r][y + y_r] == (0, 0, 0, 255):
 					num += 1
 
 	return num
+
+def colorCross(img, (x, y)):
+	""" Color the surrounding pixels of a cross red, the center pixel remains black
+	"""
+	for x_r in range(-1, 2):
+		for y_r in range(-1, 2):
+			if x_r != 0 or y_r != 0:
+					img.putpixel((x + x_r, y + y_r), (255, 0, 0, 0))
+
+	return img
 
 
 def findCrossings(img):
@@ -35,15 +45,17 @@ def findCrossings(img):
 	# iterate over 9 pixel sections
 	for x in range(1, img.size[0] - 1):
 		for y in range(1, img.size[1] - 1):
-			if originalImg[x][y] == 0 and numZeroesAround(originalImg, (x,y)) >= 4:
+			if originalImg[x][y] == (0, 0, 0, 255) and numZeroesAround(originalImg, (x,y)) >= 4:
+				img = colorCross(img, (x, y))
 				crossings += 1
 
 	print "Crossings that occur:", crossings
+	return img
 
 
 
-
-filePath = prompt.getSingleString("Enter path to image")
+#prompt for TSP image
+filePath = prompt.getSingleString("Enter path to TSP image")
 
 try:
 	fileTmp = open(filePath, "r")
@@ -54,8 +66,8 @@ except IOError:
 	sys.exit()
 
 
-image = Image.open(filePath).convert("L")
-print "Image converted to bw..."
+image = Image.open(filePath).convert("RGBA")
+print "Image converted to rgba..."
 print "\t", image.format, image.size, image.mode
 
 
@@ -66,3 +78,23 @@ image = findCrossings(image)
 
 
 # **********************
+
+print "Saving image..."
+
+
+# save cross image
+separatedFilePath = filePath.rsplit(".", 1)
+newFilePath = separatedFilePath[0] + "-cross" + "." + separatedFilePath[1]
+try:
+	fileTmp = open(newFilePath, "r")
+	fileTmp.close()
+
+	if not prompt.yes_no_choice("\tWould you like to overwrite file " + newFilePath):
+		print "\tImage was not saved."
+		sys.exit()
+
+except IOError:
+	pass
+
+image.save(newFilePath)
+print "\t", "Saved successfully to", newFilePath
